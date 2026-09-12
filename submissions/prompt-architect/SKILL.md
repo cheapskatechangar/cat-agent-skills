@@ -181,9 +181,9 @@ When the user provides a bad output or failure:
    - example bias or contradiction;
    - inherently variable model behavior;
    - impossible or mutually incompatible requirement.
-3. Make the **smallest change** that addresses the cause.
-4. Preserve behavior that was already working.
-5. Add the failure as a regression test plus at least one nearby success case.
+3. Decide whether the root cause is prompt-level or outside the prompt.
+4. If the cause is prompt-level, make the **smallest prompt change** that addresses it, preserve behavior that was already working, and add the failure as a regression test plus at least one nearby success case.
+5. If the cause is missing knowledge, tooling, permissions, deterministic validation, unsupported capability, stale data, or another architecture limitation, do **not** rewrite the prompt as if that solves the problem. State the required architecture/data/tool change. Add a prompt-side guardrail or regression case only when it meaningfully improves behavior without pretending to enforce the missing control.
 
 Do not rewrite the entire prompt by default.
 
